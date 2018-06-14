@@ -1,0 +1,16 @@
+sudo: false
+dist: trusty
+language: java
+jdk:
+  - oraclejdk8
+addons:
+  chrome: stable
+script:
+  - sudo apt-get update
+  - sudo apt-get install libfontconfig:i386
+  - sudo apt-get install libnss3:i386
+  - sudo apt-get install libx11-6:i386
+  - sudo apt-get install libgconf-2-4:i386
+  - Xvfb :1 -ac -screen 0 1280x1024x24 &
+  - export DISPLAY=:1
+  - mvn test
